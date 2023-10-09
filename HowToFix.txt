@@ -1,0 +1,11 @@
+Во время сборки в VS 2022 столкнулся с ошибкой "Code Error C4996" Description "'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."
+
+Как я починил:
+Debug -> <name> Debug Properties
+C/C++ -> Preprocessor -> Preprocessor Definitions
+Edit
+Удаляем всё и пишем: _CRT_SECURE_NO_WARNINGS
+Снимаем галочку с Inherit from parent or project default
+OK
+Apply
+OK
