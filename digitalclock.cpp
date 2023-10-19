@@ -1,27 +1,27 @@
-/*
-try:
-    while True:  # Main program loop.
-
-except KeyboardInterrupt:
-    print('Digital Clock, by Al Sweigart al@inventwithpython.com')
-    sys.exit()  # When Ctrl-C is pressed, end the program.
-
-*/
-
-// Digital Clock, by Al Sweigart al@inventwithpython.com
+// Digital Clock, by Al Sweigart
 // Displays a digital clock of the current time with a seven - segment
-// More info at https ://en.wikipedia.org/wiki/Seven-segment_display
-// Requires sevseg.py to be in the same folder.
 // This code is available at https ://nostarch.com/big-book-small-python-programming
+// #19 DIGITAL CLOCK
 
 #include <iostream>
 #include <string>
 #include <ctime>
 #include "sevseg.h"
 #include "windows.h"
+// https://stackoverflow.com/questions/1641182/how-can-i-catch-a-ctrl-c-event
+#include <signal.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 using namespace std;
 
+void my_handler(sig_atomic_t s) {
+    cout << "Digital Clock\nGoodbye!";
+    exit(1);
+}
+
 int main() {
+    signal(SIGINT, my_handler);
     while (true) { // Main program loop.
         // Clear the screen by printing several newlines:
         for (int i = 0; i < 60; ++i)
@@ -55,6 +55,3 @@ int main() {
 
     return 0;
 }
-
-// Добавить обработку нажатия Ctrl + C
-// Добавить решение проблемы localtime
